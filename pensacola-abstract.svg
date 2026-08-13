@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f1f4f6"/><stop offset=".42" stop-color="#c7d2dc"/><stop offset="1" stop-color="#8fa2b1"/></linearGradient>
+    <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#d5d8d7"/><stop offset="1" stop-color="#718391"/></linearGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="7"/></filter>
+  </defs>
+  <rect width="900" height="620" fill="url(#sky)"/>
+  <circle cx="690" cy="90" r="150" fill="#fff" opacity=".22"/>
+  <g opacity=".24" filter="url(#blur)" fill="#5f7482">
+    <rect x="80" y="290" width="280" height="210" rx="3"/>
+    <rect x="118" y="235" width="46" height="265"/>
+    <rect x="190" y="205" width="56" height="295"/>
+    <rect x="270" y="250" width="44" height="250"/>
+  </g>
+  <path d="M0 445 C180 408 265 448 390 423 C540 394 674 432 900 388 L900 620 L0 620Z" fill="url(#ground)" opacity=".7"/>
+  <g stroke="#456373" stroke-width="10" stroke-linecap="round" opacity=".35" filter="url(#blur)">
+    <path d="M748 422 C740 322 752 210 770 120"/>
+    <path d="M770 122 C720 100 694 84 671 55"/>
+    <path d="M770 122 C810 95 846 83 875 58"/>
+    <path d="M770 122 C723 127 695 134 657 160"/>
+    <path d="M770 122 C820 125 858 145 890 176"/>
+  </g>
+  <g opacity=".16" stroke="#ffffff" fill="none">
+    <path d="M0 92H900M0 174H900M0 256H900"/>
+  </g>
+</svg>
