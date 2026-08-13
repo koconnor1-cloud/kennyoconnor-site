@@ -174,3 +174,93 @@ a{text-decoration:none;color:inherit} img{display:block;max-width:100%} button,i
     background-repeat: no-repeat !important;
   }
 }
+
+
+/* Publication image-card layout */
+.pubs-visual{
+  display:grid;
+  gap:16px;
+  border-top:0;
+}
+.pub-card{
+  display:grid;
+  grid-template-columns:190px minmax(0,1fr) auto;
+  gap:24px;
+  align-items:center;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:10px;
+  overflow:hidden;
+  box-shadow:0 7px 22px rgba(7,27,52,.065);
+  min-height:142px;
+  transition:transform .18s ease,box-shadow .18s ease;
+}
+.pub-card:hover{
+  transform:translateY(-2px);
+  box-shadow:var(--shadow);
+}
+.pub-art{
+  height:100%;
+  min-height:142px;
+  position:relative;
+  overflow:hidden;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(145deg,#071d38,#0d4f91);
+}
+.pub-art:before{
+  content:"";
+  position:absolute;
+  inset:auto -38px -72px auto;
+  width:180px;
+  height:180px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 0 0 36px rgba(255,255,255,.035),0 0 0 72px rgba(255,255,255,.025);
+}
+.pub-art.arctic{background:linear-gradient(145deg,#0b315b,#1878a7)}
+.pub-art.space{background:linear-gradient(145deg,#07152f,#273f87)}
+.pub-art.foodtruck{background:linear-gradient(145deg,#0a4f68,#33886a)}
+.pub-art.education{background:linear-gradient(145deg,#13335f,#3158a6)}
+.pub-art.anxiety{background:linear-gradient(145deg,#162849,#5d4f91)}
+.pub-art svg{
+  width:112px;
+  height:92px;
+  stroke:#fff;
+  fill:none;
+  stroke-width:1.7;
+  position:relative;
+  z-index:2;
+  opacity:.96;
+}
+.pub-art .art-accent{stroke:var(--green2)}
+.pub-copy{padding:22px 0}
+.pub-copy h3{
+  font-size:18px;
+  line-height:1.25;
+  margin:0 0 8px;
+  color:#17395c;
+}
+.pub-copy p{
+  font-size:12px;
+  color:#667587;
+  margin:0;
+}
+.pub-card .pill{
+  margin-right:24px;
+  white-space:nowrap;
+}
+@media(max-width:900px){
+  .pub-card{grid-template-columns:150px minmax(0,1fr) auto;gap:18px}
+  .pub-art{min-height:132px}
+  .pub-art svg{width:96px;height:80px}
+  .pub-copy{padding:18px 0}
+  .pub-card .pill{margin-right:18px}
+}
+@media(max-width:640px){
+  .pub-card{grid-template-columns:1fr;gap:0}
+  .pub-art{height:176px;min-height:176px}
+  .pub-art svg{width:120px;height:100px}
+  .pub-copy{padding:19px 18px 8px}
+  .pub-card .pill{margin:0 18px 18px;justify-self:start}
+}
