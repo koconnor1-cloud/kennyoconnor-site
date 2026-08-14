@@ -1,68 +1,47 @@
-/* iPad/tablet homepage override.
-   Safari on iPad can report desktop-class widths, so we target both tablet
-   viewport ranges and touch/coarse-pointer devices. The metrics row is hidden
-   on tablets and the hero gets enough fixed space so the Teach/Research/Partner
-   band cannot overlap the hero content. */
+/* iPad/tablet homepage fix.
+   Keep the approved hero artwork at its natural proportions. On touch tablets,
+   remove the four-metric row so the Teach / Research / Partner band cannot
+   overlap the hero. Do not stretch the hero image to fill a taller box. */
 
-@media (min-width:700px) and (max-width:1600px){
+/* Landscape iPad / tablet: preserve the original 522px hero geometry and
+   use the desktop artwork without stretching it. */
+@media (hover:none) and (pointer:coarse) and (min-width:901px){
   .hero{
-    height:600px !important;
-    min-height:600px !important;
+    height:522px !important;
+    min-height:522px !important;
     overflow:hidden !important;
-    position:relative !important;
   }
   .hero .container{
-    height:600px !important;
-    min-height:600px !important;
-    position:relative !important;
+    height:522px !important;
+    min-height:522px !important;
   }
   .hero-copy{
-    height:600px !important;
-    min-height:600px !important;
-    padding-top:44px !important;
-    padding-bottom:40px !important;
-    justify-content:center !important;
+    height:522px !important;
+    min-height:522px !important;
+    justify-content:flex-start !important;
+    padding-top:55px !important;
+    padding-bottom:24px !important;
   }
   .hero-visual{
-    height:600px !important;
-    min-height:600px !important;
-    background-size:cover !important;
+    height:522px !important;
+    min-height:522px !important;
+    background-image:url("hero-master-desktop.jpg") !important;
+    background-size:auto 100% !important;
     background-position:center top !important;
     background-repeat:no-repeat !important;
   }
-  .metrics{
-    display:none !important;
-  }
+  .metrics{display:none !important}
   .triad{
     position:relative !important;
-    z-index:20 !important;
+    z-index:3 !important;
     clear:both !important;
     margin-top:0 !important;
   }
 }
 
-/* Explicit iPad/touch fallback for Safari desktop-class viewport reporting. */
-@media (hover:none) and (pointer:coarse) and (min-width:700px){
-  .hero{
-    height:600px !important;
-    min-height:600px !important;
-  }
-  .hero .container,
-  .hero-copy,
-  .hero-visual{
-    height:600px !important;
-    min-height:600px !important;
-  }
-  .hero-visual{
-    background-size:cover !important;
-    background-position:center top !important;
-  }
-  .metrics{display:none !important}
-  .triad{position:relative !important;z-index:20 !important;margin-top:0 !important}
-}
-
-/* Portrait tablet cleanup. */
-@media (min-width:700px) and (max-width:900px){
+/* Portrait iPad / tablet: use the purpose-built mobile artwork and let the
+   content stack naturally. */
+@media (hover:none) and (pointer:coarse) and (min-width:700px) and (max-width:900px){
   .hero{
     height:auto !important;
     min-height:0 !important;
@@ -73,18 +52,30 @@
     min-height:0 !important;
   }
   .hero-copy{
+    width:100% !important;
     height:auto !important;
     min-height:0 !important;
-    padding:46px 0 34px !important;
+    padding:46px 0 35px !important;
   }
   .hero-visual{
     position:relative !important;
     width:100% !important;
-    height:470px !important;
-    min-height:470px !important;
+    height:520px !important;
+    min-height:520px !important;
+    background-image:url("hero-master-mobile.jpg") !important;
     background-size:cover !important;
     background-position:center top !important;
+    background-repeat:no-repeat !important;
   }
   .metrics{display:none !important}
   .triad{margin-top:0 !important}
+}
+
+/* Desktop/laptop safeguard: the source artwork should never be distorted. */
+@media (hover:hover) and (pointer:fine) and (min-width:901px){
+  .hero-visual{
+    background-size:auto 100% !important;
+    background-position:center top !important;
+    background-repeat:no-repeat !important;
+  }
 }
