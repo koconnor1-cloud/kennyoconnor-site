@@ -1,22 +1,30 @@
-/* Tablet/iPad homepage layout fix: allow the hero to grow with the metrics row instead of using a fixed 540px height. */
-@media (min-width: 700px) and (max-width: 1180px){
-  .hero{height:auto;min-height:650px;overflow:hidden}
-  .hero .container{height:auto;min-height:650px;align-items:stretch}
-  .hero-copy{height:auto;min-height:650px;padding-top:48px;padding-bottom:48px;justify-content:center}
-  .hero-title{font-size:clamp(48px,5.5vw,62px)}
+/* iPad/tablet homepage layout fix.
+   Large iPads in landscape can report CSS widths around 1366px, so a simple
+   max-width:1180px breakpoint misses them. Target coarse-pointer devices up to
+   1400px and let the hero grow tall enough for the metrics row. */
+@media (hover:none) and (pointer:coarse) and (min-width:700px) and (max-width:1400px){
+  .hero{height:auto;min-height:700px;overflow:hidden}
+  .hero .container{height:auto;min-height:700px;align-items:stretch}
+  .hero-copy{height:auto;min-height:700px;padding-top:48px;padding-bottom:58px;justify-content:center}
+  .hero-title{font-size:clamp(48px,5vw,62px)}
   .hero-lede{max-width:620px}
-  .metrics{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 24px;max-width:620px;margin-top:26px;margin-bottom:4px}
-  .metric{grid-template-columns:33px 1fr}
-  .hero-visual{height:100%;min-height:650px}
+  .metrics{margin-top:28px;margin-bottom:18px}
+  .hero-visual{height:100%;min-height:700px}
   .triad{position:relative;z-index:3;clear:both}
 }
 
+/* Medium-width tablets: move the four metrics into two rows. */
+@media (hover:none) and (pointer:coarse) and (min-width:700px) and (max-width:1180px){
+  .metrics{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 24px;max-width:620px}
+  .metric{grid-template-columns:33px 1fr}
+}
+
 /* Portrait tablets get extra breathing room and a slightly narrower image panel. */
-@media (min-width:700px) and (max-width:900px){
-  .hero{min-height:720px}
-  .hero .container{min-height:720px;grid-template-columns:60% 40%}
-  .hero-copy{min-height:720px;padding-right:18px}
-  .hero-visual{width:45%;min-height:720px}
+@media (hover:none) and (pointer:coarse) and (min-width:700px) and (max-width:900px){
+  .hero{min-height:760px}
+  .hero .container{min-height:760px;grid-template-columns:60% 40%}
+  .hero-copy{min-height:760px;padding-right:18px;padding-bottom:62px}
+  .hero-visual{width:45%;min-height:760px}
   .hero-title{font-size:50px}
   .metrics{max-width:540px}
 }
