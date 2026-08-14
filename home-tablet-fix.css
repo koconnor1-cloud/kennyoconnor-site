@@ -1,30 +1,84 @@
-/* iPad/tablet homepage layout fix.
-   Large iPads in landscape can report CSS widths around 1366px, so a simple
-   max-width:1180px breakpoint misses them. Target coarse-pointer devices up to
-   1400px and let the hero grow tall enough for the metrics row. */
-@media (hover:none) and (pointer:coarse) and (min-width:700px) and (max-width:1400px){
-  .hero{height:auto;min-height:700px;overflow:hidden}
-  .hero .container{height:auto;min-height:700px;align-items:stretch}
-  .hero-copy{height:auto;min-height:700px;padding-top:48px;padding-bottom:58px;justify-content:center}
-  .hero-title{font-size:clamp(48px,5vw,62px)}
-  .hero-lede{max-width:620px}
-  .metrics{margin-top:28px;margin-bottom:18px}
-  .hero-visual{height:100%;min-height:700px}
-  .triad{position:relative;z-index:3;clear:both}
+/* Homepage tablet/iPad hard fix.
+   iPad landscape can use desktop-class viewport widths around 1366–1376px.
+   Do not rely on hover/pointer media features; Safari may report them differently
+   depending on keyboard/trackpad state. */
+
+@media (min-width:901px) and (max-width:1400px){
+  .hero{
+    height:720px !important;
+    min-height:720px !important;
+    overflow:hidden !important;
+  }
+  .hero .container{
+    height:720px !important;
+    min-height:720px !important;
+    align-items:stretch !important;
+  }
+  .hero-copy{
+    height:720px !important;
+    min-height:720px !important;
+    padding-top:44px !important;
+    padding-bottom:70px !important;
+    justify-content:center !important;
+  }
+  .hero-visual{
+    height:720px !important;
+    min-height:720px !important;
+  }
+  .metrics{
+    margin-top:28px !important;
+    margin-bottom:0 !important;
+  }
+  .triad{
+    position:relative !important;
+    z-index:3 !important;
+    clear:both !important;
+    margin-top:0 !important;
+  }
 }
 
-/* Medium-width tablets: move the four metrics into two rows. */
-@media (hover:none) and (pointer:coarse) and (min-width:700px) and (max-width:1180px){
-  .metrics{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 24px;max-width:620px}
-  .metric{grid-template-columns:33px 1fr}
+/* Medium-width tablets: use two rows of metrics for extra room. */
+@media (min-width:700px) and (max-width:1180px){
+  .hero{
+    height:760px !important;
+    min-height:760px !important;
+  }
+  .hero .container,
+  .hero-copy,
+  .hero-visual{
+    height:760px !important;
+    min-height:760px !important;
+  }
+  .metrics{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    gap:18px 24px !important;
+    max-width:620px !important;
+  }
+  .metric{grid-template-columns:33px 1fr !important}
 }
 
-/* Portrait tablets get extra breathing room and a slightly narrower image panel. */
-@media (hover:none) and (pointer:coarse) and (min-width:700px) and (max-width:900px){
-  .hero{min-height:760px}
-  .hero .container{min-height:760px;grid-template-columns:60% 40%}
-  .hero-copy{min-height:760px;padding-right:18px;padding-bottom:62px}
-  .hero-visual{width:45%;min-height:760px}
-  .hero-title{font-size:50px}
-  .metrics{max-width:540px}
+/* Portrait tablets. */
+@media (min-width:700px) and (max-width:900px){
+  .hero{
+    height:auto !important;
+    min-height:800px !important;
+  }
+  .hero .container{
+    height:auto !important;
+    min-height:800px !important;
+    grid-template-columns:60% 40% !important;
+  }
+  .hero-copy{
+    height:auto !important;
+    min-height:800px !important;
+    padding-right:18px !important;
+    padding-bottom:74px !important;
+  }
+  .hero-visual{
+    width:45% !important;
+    height:100% !important;
+    min-height:800px !important;
+  }
+  .hero-title{font-size:50px !important}
+  .metrics{max-width:540px !important}
 }
