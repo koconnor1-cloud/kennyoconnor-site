@@ -23,13 +23,18 @@ jobs:
       - name: Install Pillow
         run: python -m pip install --upgrade pillow
 
-      - name: Convert SBILC WebP to true JPEG
+      - name: Decode and convert SBILC to true JPEG
         run: |
           python - <<'PY'
+          import base64
+          from pathlib import Path
           from PIL import Image
-          im = Image.open('research-sbilc.webp').convert('RGB')
+
+          encoded = Path('research-sbilc.webp').read_text().strip()
+          Path('research-sbilc-decoded.webp').write_bytes(base64.b64decode(encoded))
+          im = Image.open('research-sbilc-decoded.webp').convert('RGB')
           im.save('research-sbilc.jpg', 'JPEG', quality=96, subsampling=0, optimize=True)
-          print(im.size)
+          print('Converted size:', im.size)
           PY
 
       - name: Commit corrected JPEG
