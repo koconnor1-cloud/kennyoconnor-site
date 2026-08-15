@@ -1,0 +1,45 @@
+name: Fix SBILC JPEG
+
+on:
+  push:
+    paths:
+      - '.github/workflows/fix-sbilc.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  convert:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Pillow
+        run: python -m pip install --upgrade pillow
+
+      - name: Convert SBILC WebP to true JPEG
+        run: |
+          python - <<'PY'
+          from PIL import Image
+          im = Image.open('research-sbilc.webp').convert('RGB')
+          im.save('research-sbilc.jpg', 'JPEG', quality=96, subsampling=0, optimize=True)
+          print(im.size)
+          PY
+
+      - name: Commit corrected JPEG
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research-sbilc.jpg
+          if git diff --cached --quiet; then
+            echo "No change needed"
+          else
+            git commit -m "Fix SBILC hero image encoding"
+            git push
+          fi
