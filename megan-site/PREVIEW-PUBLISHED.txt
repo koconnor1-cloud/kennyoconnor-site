@@ -1,1 +1,0 @@
-Megan Harden website preview published as an isolated subdirectory of the Kenny O'Connor GitHub Pages site. This file exists only to record the temporary preview deployment.
