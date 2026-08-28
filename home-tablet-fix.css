@@ -1,7 +1,7 @@
 /* Homepage hero proportion fix.
-   Preserve the approved 522px desktop composition, keep portrait imagery at its
-   natural aspect ratio, and avoid the former 720–800px hard-stretch rules that
-   made normal laptop/desktop windows look compressed. */
+   Preserve the approved 522px composition and never stretch the hero artwork.
+   The image is always rendered with its natural aspect ratio and cropped only
+   when necessary to fill the available visual area. */
 
 @media (min-width:901px){
   .hero{
@@ -30,6 +30,7 @@
     width:52.5% !important;
     background-repeat:no-repeat !important;
     background-position:right top !important;
+    background-size:cover !important;
   }
 
   .metrics{
@@ -45,16 +46,17 @@
   }
 }
 
-/* Full desktop: show the approved 806x522 artwork without stretching it. */
+/* Full desktop: use the approved desktop composition. */
 @media (min-width:1251px){
   .hero-visual{
     background-image:url("hero-master-desktop.jpg") !important;
-    background-size:auto 100% !important;
+    background-size:cover !important;
+    background-position:right top !important;
   }
 }
 
-/* Compact desktop / landscape tablet: use the narrower 651x522 composition,
-   still preserving its aspect ratio. */
+/* Compact desktop / landscape tablet: use the narrower composition while
+   preserving its aspect ratio. */
 @media (min-width:901px) and (max-width:1250px){
   .hero-visual{
     background-image:url("hero-master-mobile.jpg") !important;
