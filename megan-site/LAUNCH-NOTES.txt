@@ -1,0 +1,24 @@
+MEGAN HARDEN WEBSITE — LAUNCH CHECKLIST
+
+Already built:
+- Responsive homepage
+- Professional Organizing page
+- Personal Styling page
+- Makeup Artistry page
+- Music Lessons page
+- The Megan Minute page
+- About page
+- Contact/inquiry page
+- Sage green/ivory brand system
+- Mobile navigation
+- GitHub Pages nojekyll marker
+
+Needed before public launch:
+- Megan portrait and service photography
+- Confirm biography and service area
+- Confirm music lesson instruments/ages/formats
+- Megan contact email/phone/socials
+- Connect inquiry form
+- First real Megan Minute posts
+- Dedicated GitHub repository + GitHub Pages URL
+- Optional custom domain
